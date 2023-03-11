@@ -31,6 +31,7 @@ public class ControlEnemigo_Zombie : MonoBehaviour
     void Start()
     {
         vidaActualEnemigo = vidaDelEnemigo;
+        jugador = GameObject.FindWithTag("Player").transform;
     }
 
     // Update is called once per frame

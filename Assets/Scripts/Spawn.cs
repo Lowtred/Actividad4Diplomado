@@ -19,7 +19,7 @@ public class Spawn : MonoBehaviour
         {
             posicionX = Random.Range(1, 30);
             posicionZ = Random.Range(1, 30);
-            Instantiate(enemigo, new Vector3(posicionX, 5, posicionZ), Quaternion.identity);
+            Instantiate(enemigo, new Vector3(posicionX, 0, posicionZ), Quaternion.identity);
             yield return new WaitForSeconds(20f);
             numEnemigos += 1;
         }
