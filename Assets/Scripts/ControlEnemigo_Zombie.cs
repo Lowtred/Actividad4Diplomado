@@ -31,6 +31,10 @@ public class ControlEnemigo_Zombie : MonoBehaviour
     //UI
     public Slider barraVidaEnemigo;
 
+    //Sonido
+    public AudioClip[] audios;
+    public AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +81,7 @@ public class ControlEnemigo_Zombie : MonoBehaviour
             if (vidaActualEnemigo > 0)
             { 
                 animator.SetTrigger(variableDano);
+                audioSource.PlayOneShot(audios[0]);
                 vidaActualEnemigo -= danoPorGolpe;
                 barraVidaEnemigo.value = vidaActualEnemigo;
                 Debug.Log(vidaActualEnemigo);
@@ -85,6 +90,7 @@ public class ControlEnemigo_Zombie : MonoBehaviour
             if (vidaActualEnemigo <= 0)
             {
                 animator.SetTrigger(variableMorir);
+                audioSource.PlayOneShot(audios[1]);
                 Destroy(gameObject,4);
             }
         }
@@ -98,6 +104,7 @@ public class ControlEnemigo_Zombie : MonoBehaviour
         {
             //Debug.Log("Contacto con jugador");
             animator.SetTrigger(variableGolpear);
+            
         }
     }
     private void OnDrawGizmos()
@@ -109,6 +116,7 @@ public class ControlEnemigo_Zombie : MonoBehaviour
     public void Ataca()
     {
         colliderAtaque.SetActive(true);
+        audioSource.PlayOneShot(audios[2]);
     }
 
     public void DejaDeAtacar()
