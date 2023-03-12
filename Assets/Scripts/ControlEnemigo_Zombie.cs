@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControlEnemigo_Zombie : MonoBehaviour
 {
@@ -27,10 +28,14 @@ public class ControlEnemigo_Zombie : MonoBehaviour
     bool canMove = true;
     public GameObject colliderAtaque;
 
+    //UI
+    public Slider barraVidaEnemigo;
+
     // Start is called before the first frame update
     void Start()
     {
         vidaActualEnemigo = vidaDelEnemigo;
+        barraVidaEnemigo.value = vidaActualEnemigo;
         jugador = GameObject.FindWithTag("Player").transform;
     }
 
@@ -73,6 +78,7 @@ public class ControlEnemigo_Zombie : MonoBehaviour
             { 
                 animator.SetTrigger(variableDano);
                 vidaActualEnemigo -= danoPorGolpe;
+                barraVidaEnemigo.value = vidaActualEnemigo;
                 Debug.Log(vidaActualEnemigo);
             }
 
